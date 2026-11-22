@@ -1,0 +1,14 @@
+Why is data preprocessing important before training an AI model?
+Real-world data frequently contains missing entries, inconsistent text labels, unencoded categories, and variables measured on incompatible scales. Preprocessing resolves these issues so machine learning algorithms can learn genuine patterns instead of crashing on invalid inputs or being skewed by formatting artifacts.   
+What is the difference between missing values and duplicate records?
+Missing values occur when specific attributes are empty (NaN or Null) inside an observation, representing incomplete data for those fields. Duplicate records occur when identical rows appear multiple times, artificially inflating sample weights and risking data leakage if split across training and test sets. 
+  Why is the median sometimes preferred over the mean when handling missing values?
+The mean is sensitive to extreme values and skewed distributions, which can pull imputed values away from the true center of the data. The median uses the 50th percentile and resists distortion from outliers or multi-species skewness, making it a more reliable default for skewed numerical features.   
+What are outliers, and why should we not automatically remove them?
+Outliers are observations that lie far outside the typical spread of a feature. Automatically deleting them risks discarding legitimate real-world or biological variation (such as naturally larger species); they should only be removed or capped after domain inspection confirms a recording or sensor error.  
+ What is the difference between Label Encoding and One-Hot Encoding?
+Label Encoding maps categories to integers ($0, 1, 2, \dots$) within a single column, making it suitable for binary or naturally ordered (ordinal) features. One-Hot Encoding expands each category into its own binary ($0/1$) column, preventing models from inferring a false numerical ranking among unordered (nominal) categories.  
+ Why is feature scaling important for some machine learning algorithms?
+Distance-based algorithms (like KNN and K-Means) and gradient-descent models (like Logistic Regression, SVMs, and Neural Networks) are dominated by features with large numerical ranges (such as body_mass_g in thousands vs. bill_depth_mm in tens). Scaling places features on a comparable range so every predictor contributes fairly and optimization converges smoothly. 
+  What problems could occur if we train a machine learning model on uncleaned data?
+Training on uncleaned data can trigger runtime errors on NaN or string values, distort model weights due to unscaled features or duplicate rows, inflate validation scores through data leakage, and produce poor predictions on unseen test data.   
